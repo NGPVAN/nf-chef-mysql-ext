@@ -1,0 +1,18 @@
+# File is automatically placed here by Chef.
+[mysqld]
+
+character-set-server = <%= node['mysql']['extended']['character_set'] %>
+collation-server = <%= node['mysql']['extended']['collation'] %>
+
+datadir = <%= node['mysql']['extended']['datadir'] %>
+tmpdir = <%= node['mysql']['extended']['tmpdir'] %>
+
+general_log_file = <%= node['mysql']['extended']['general_log_file'] %>
+general_log = <%= node['mysql']['extended']['general_log'] %>
+
+slow_query_log = <%= node['mysql']['extended']['general_log'] %>
+slow_query_log_file = <%= node['mysql']['extended']['general_log_file'] %>
+
+
+tmp_table_size = <%= node['mysql']['extended']['tmp_table_size'] %>
+
