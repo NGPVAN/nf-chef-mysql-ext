@@ -1,0 +1,5 @@
+name          "mysql-ext"
+maintainer        "NationalField, LLC"
+maintainer_email  "engineers@nationalfield.com"
+license           "Apache 2.0"
+description       "Adds additionaly configuration options for MySQL."
