@@ -1,16 +1,33 @@
-directory "/mnt/dbtmp" do
+directory node['mysql']['extended']['tmpdir'] do
     owner "mysql"
     group "mysql"
     mode "0755"
 end
 
-mount "/mnt/dbtmp" do
+mount node['mysql']['extended']['tmpdir'] do
     device "none"
     fstype "tmpfs"
-    options "defaults,size=10M"
+    options "defaults,size=#{node['mysql']['extended']['ramdisk']}"
     action [:mount, :enable]
     dump 0
     pass 0
+    not_if node['mysql']['extended']['ramdisk'].nil?
+end
+
+directory node['mysql']['extended']['datadir'] do
+    owner "mysql"
+    group "mysql"
+    mode "0755"
+end
+
+mount node['mysql']['extended']['datadir'] do
+    device node['mysql']['extended']['datadir_device']
+    fstype "auto"
+    options "defaults,nobootwait"
+    action [:mount, :enable]
+    dump 0
+    pass 2
+    not_if node['mysql']['extended']['datadir_device'].nil?
 end
 
 template "/etc/apparmor.d/local/usr.sbin.mysqld" do
