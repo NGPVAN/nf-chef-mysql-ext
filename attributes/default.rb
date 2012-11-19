@@ -1,3 +1,5 @@
+default['mysql']['extended']['server_id'] = nil
+
 default['mysql']['extended']['character_set'] = 'utf8'
 default['mysql']['extended']['collation'] = 'utf8_unicode_ci'
 

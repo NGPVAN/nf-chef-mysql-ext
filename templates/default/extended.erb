@@ -1,6 +1,8 @@
 # File is automatically placed here by Chef.
 [mysqld]
 
+server_id = <%= node['mysql']['extended']['server_id'] %>
+
 character-set-server = <%= node['mysql']['extended']['character_set'] %>
 collation-server = <%= node['mysql']['extended']['collation'] %>
 

@@ -1,3 +1,7 @@
+if node['mysql']['extended']['server_id'].nil?
+    node['mysql']['extended']['server_id'] = Time.now.getutc.to_i
+end
+
 directory node['mysql']['extended']['tmpdir'] do
     owner "mysql"
     group "mysql"
