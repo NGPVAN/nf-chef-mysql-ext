@@ -6,6 +6,7 @@ directory node['mysql']['extended']['tmpdir'] do
     owner "mysql"
     group "mysql"
     mode "0755"
+    not_if node['mysql']['extended']['tmpdir'] == '/tmp'
 end
 
 mount node['mysql']['extended']['tmpdir'] do
@@ -22,6 +23,7 @@ directory node['mysql']['extended']['datadir_device_mount_point'] do
     owner "mysql"
     group "mysql"
     mode "0755"
+    not_if node['mysql']['extended']['data_dir_device_mount_point'].nil?
 end
 
 mount node['mysql']['extended']['datadir_device_mount_point'] do
