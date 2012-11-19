@@ -8,6 +8,7 @@ collation-server = <%= node['mysql']['extended']['collation'] %>
 
 datadir = <%= node['mysql']['extended']['datadir'] %>
 tmpdir = <%= node['mysql']['extended']['tmpdir'] %>
+log_bin = <%= node['mysql']['extended']['log_bin'] %>
 
 general_log_file = <%= node['mysql']['extended']['general_log_file'] %>
 general_log = <%= node['mysql']['extended']['general_log'] %>
