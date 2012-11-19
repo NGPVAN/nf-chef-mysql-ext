@@ -14,13 +14,13 @@ mount node['mysql']['extended']['tmpdir'] do
     not_if node['mysql']['extended']['ramdisk'].nil?
 end
 
-directory node['mysql']['extended']['datadir'] do
+directory node['mysql']['extended']['datadir_device_mount_point'] do
     owner "mysql"
     group "mysql"
     mode "0755"
 end
 
-mount node['mysql']['extended']['datadir'] do
+mount node['mysql']['extended']['datadir_device_mount_point'] do
     device node['mysql']['extended']['datadir_device']
     fstype "auto"
     options "defaults,nobootwait"

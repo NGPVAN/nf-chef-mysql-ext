@@ -1,4 +1,6 @@
 {
-    /mnt/dbtmp/ r,
-    /mnt/dbtmp/** rwk,
+<%= node['mysql']['extended']['tmpdir'] %>/ r,
+<%= node['mysql']['extended']['tmpdir'] %>/** rwk,
+<%= node['mysql']['extended']['datadir_device_mount_point'] %>/ r,
+<%= node['mysql']['extended']['datadir_device_mount_point'] %>/** rwk,
 }

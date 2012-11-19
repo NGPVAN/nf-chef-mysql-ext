@@ -4,6 +4,7 @@ default['mysql']['extended']['collation'] = 'utf8_unicode_ci'
 default['mysql']['extended']['tmpdir'] = '/tmp'
 default['mysql']['extended']['datadir'] = '/var/lib/mysql'
 default['mysql']['extended']['datadir_device'] = nil
+default['mysql']['extended']['datadir_device_mount_point'] = nil
 
 default['mysql']['extended']['general_log_file'] = nil
 default['mysql']['extended']['general_log'] = 0
