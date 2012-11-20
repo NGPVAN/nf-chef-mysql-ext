@@ -6,7 +6,7 @@ directory node['mysql']['extended']['tmpdir'] do
     owner "mysql"
     group "mysql"
     mode "0755"
-    not_if node['mysql']['extended']['tmpdir'] == '/tmp'
+    not_if { node['mysql']['extended']['tmpdir'].eql? '/tmp' }
 end
 
 mount node['mysql']['extended']['tmpdir'] do
@@ -16,14 +16,14 @@ mount node['mysql']['extended']['tmpdir'] do
     action [:mount, :enable]
     dump 0
     pass 0
-    not_if node['mysql']['extended']['ramdisk'].nil?
+    not_if { node['mysql']['extended']['ramdisk'].nil? }
 end
 
 directory node['mysql']['extended']['datadir_device_mount_point'] do
     owner "mysql"
     group "mysql"
     mode "0755"
-    not_if node['mysql']['extended']['data_dir_device_mount_point'].nil?
+    not_if { node['mysql']['extended']['data_dir_device_mount_point'].nil? }
 end
 
 mount node['mysql']['extended']['datadir_device_mount_point'] do
@@ -33,7 +33,7 @@ mount node['mysql']['extended']['datadir_device_mount_point'] do
     action [:mount, :enable]
     dump 0
     pass 2
-    not_if node['mysql']['extended']['datadir_device'].nil?
+    not_if { node['mysql']['extended']['datadir_device'].nil? }
 end
 
 template "/etc/apparmor.d/local/usr.sbin.mysqld" do
