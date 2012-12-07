@@ -1,16 +1,43 @@
-directory "/mnt/dbtmp" do
-    owner "mysql"
-    group "mysql"
-    mode "0755"
+if node['mysql']['extended']['server_id'].nil?
+    node['mysql']['extended']['server_id'] = Time.now.getutc.to_i
 end
 
-mount "/mnt/dbtmp" do
-    device "none"
-    fstype "tmpfs"
-    options "defaults,size=10M"
-    action [:mount, :enable]
-    dump 0
-    pass 0
+if not node['mysql']['extended']['tmpdir'].eql? '/tmp'
+    directory node['mysql']['extended']['tmpdir'] do
+        owner "mysql"
+        group "mysql"
+        mode "0755"
+    end
+end
+
+if not node['mysql']['extended']['ramdisk'].nil?
+    mount node['mysql']['extended']['tmpdir'] do
+        device "none"
+        fstype "tmpfs"
+        options "defaults,size=#{node['mysql']['extended']['ramdisk']}"
+        action [:mount, :enable]
+        dump 0
+        pass 0
+    end
+end
+
+if not node['mysql']['extended']['datadir_device_mount_point'].nil?
+    directory node['mysql']['extended']['datadir_device_mount_point'] do
+        owner "mysql"
+        group "mysql"
+        mode "0755"
+    end
+end
+
+if not node['mysql']['extended']['datadir_device'].nil?
+    mount node['mysql']['extended']['datadir_device_mount_point'] do
+        device node['mysql']['extended']['datadir_device']
+        fstype "auto"
+        options "defaults,nobootwait"
+        action [:mount, :enable]
+        dump 0
+        pass 2
+    end
 end
 
 template "/etc/apparmor.d/local/usr.sbin.mysqld" do
