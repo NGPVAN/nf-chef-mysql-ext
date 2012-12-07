@@ -1,0 +1,29 @@
+{
+  "license": "Apache 2.0",
+  "description": "Adds additionaly configuration options for MySQL.",
+  "replacing": {
+  },
+  "recommendations": {
+  },
+  "providing": {
+  },
+  "maintainer_email": "engineers@nationalfield.com",
+  "conflicting": {
+  },
+  "suggestions": {
+  },
+  "dependencies": {
+  },
+  "name": "mysql-ext",
+  "maintainer": "NationalField, LLC",
+  "attributes": {
+  },
+  "long_description": "",
+  "version": "0.0.0",
+  "recipes": {
+  },
+  "groupings": {
+  },
+  "platforms": {
+  }
+}
