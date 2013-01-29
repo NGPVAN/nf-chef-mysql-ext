@@ -42,6 +42,8 @@ end
 
 template "/etc/apparmor.d/local/usr.sbin.mysqld" do
     source "apparmor.erb"
+
+    notifies :reload, "service[apparmor]", :immediately
 end
 
 template "#{node['mysql']['confd_dir']}/extended.cnf" do
