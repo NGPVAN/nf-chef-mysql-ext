@@ -1,5 +1,5 @@
 if node['mysql']['extended']['server_id'].nil?
-    node['mysql']['extended']['server_id'] = Time.now.getutc.to_i
+    node.default['mysql']['extended']['server_id'] = Time.now.getutc.to_i
 end
 
 if not node['mysql']['extended']['tmpdir'].eql? '/tmp'
